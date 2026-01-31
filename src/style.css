@@ -12,3 +12,100 @@ th, td {
   padding: 12px;
   text-align: left;
 }
+
+/* Color scheme - 60/30/10 rule */
+body {
+  background-color: #f8ede5;
+  color: #016180;
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #016180;
+}
+
+button {
+  background-color: #016180;
+  color: #f8ede5;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #8c5c47;
+}
+
+input, textarea, select {
+  border: 2px solid #016180;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: white;
+  color: #016180;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #8c5c47;
+  box-shadow: 0 0 5px #8c5c47;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #016180;
+}
+
+a {
+  color: #016180;
+}
+
+a:hover {
+  color: #8c5c47;
+}
+
+details {
+  background-color: white;
+  border: 2px solid #016180;
+  border-radius: 4px;
+  margin: 1em 0;
+  padding: 0;
+}
+
+summary {
+  background-color: #016180;
+  color: #f8ede5;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 2px 2px 0 0;
+}
+
+summary:hover {
+  background-color: #8c5c47;
+}
+
+details[open] > summary {
+  border-bottom: 2px solid #016180;
+}
+
+details > * {
+  padding: 0 15px 15px 15px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
