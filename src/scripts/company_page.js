@@ -1,4 +1,4 @@
-import { getEntryElement } from "./elements_helper.js"
+import { getEntryElement, isValidTextInput, isValidNumberInput, isValidDate } from "./inputs_helper.js"
 
 var origin = "127.0.0.1:8082"
 var url = `http://${origin}`
@@ -12,7 +12,6 @@ function config() {
   document.getElementById("body-title").innerText = title
 }
 
-// ========== EMPLOYEES ==========
 async function generateEmployeeElements() {
   let response = await fetchEmployees()
   if (!response.ok) {
@@ -80,6 +79,21 @@ function onPostEmployee() {
   let name = document.getElementById("empName")
   let position = document.getElementById("empPosition")
   let salary = document.getElementById("empSalary")
+  
+  // Validation
+  if (!isValidTextInput(name.value)) {
+    alert(`Invalid information: ${name.name}`)
+    return
+  }
+  if (!isValidTextInput(position.value)) {
+    alert(`Invalid information: ${position.name}`)
+    return
+  }
+  if (!isValidNumberInput(salary.value)) {
+    alert(`Invalid information: ${salary.name}`)
+    return
+  }
+  
   fetch(url + `/companies/${data.id}/employees`, {
     method: 'POST',
     headers: {
@@ -102,7 +116,6 @@ function onPostEmployee() {
   .catch(err => { console.log(err) })
 }
 
-// ========== INQUIRIES ==========
 async function generateInquiriesElements() {
   let response = await fetchInquiries()
   if (!response.ok) {
@@ -176,6 +189,33 @@ function onPostInquiry() {
   let arrival = document.getElementById("inquiryArrival")
   let cost = document.getElementById("inquiryCost")
   let cargoAmount = document.getElementById("inquiryCargoAmount")
+  
+  // Validation
+  if (!isValidTextInput(name.value)) {
+    alert(`Invalid information: ${origin.name}`)
+    return
+  }
+  if (!isValidTextInput(destination.value)) {
+    alert(`Invalid information: ${destination.name}`)
+    return
+  }
+  if (!isValidDate(departure.value)) {
+    alert(`Invalid information: ${departure.name}`)
+    return
+  }
+  if (!isValidDate(arrival.value)) {
+    alert(`Invalid information: ${arrival.name}`)
+    return
+  }
+  if (!isValidNumberInput(cost.value)) {
+    alert(`Invalid information: ${cost.name}`)
+    return
+  }
+  if (!isValidNumberInput(cargoAmount.value)) {
+    alert(`Invalid information: ${cargoAmount.name}`)
+    return
+  }
+  
   fetch(url + `/companies/${data.id}/inquiries`, {
     method: 'POST',
     headers: {
@@ -210,7 +250,6 @@ function onPostInquiry() {
   .catch(err => { console.log(err) })
 }
 
-// ========== VEHICLES ==========
 async function generateVehiclesElements() {
   let response = await fetchVehicles()
   if (!response.ok) {
@@ -280,6 +319,25 @@ function onPostVehicle() {
   let model = document.getElementById("vehicleModel")
   let capacity = document.getElementById("vehicleCapacity")
   let maxLoad = document.getElementById("vehicleMaxLoad")
+  
+  // Validation
+  if (!isValidTextInput(name.value)) {
+    alert(`Invalid information: ${type.name}`)
+    return
+  }
+  if (!isValidTextInput(model.value)) {
+    alert(`Invalid information: ${model.name}`)
+    return
+  }
+  if (!isValidNumberInput(capacity.value)) {
+    alert(`Invalid information: ${capacity.name}`)
+    return
+  }
+  if (!isValidNumberInput(maxLoad.value)) {
+    alert(`Invalid information: ${maxLoad.name}`)
+    return
+  }
+  
   fetch(url + `/companies/${data.id}/vehicles`, {
     method: 'POST',
     headers: {
@@ -306,13 +364,6 @@ function onPostVehicle() {
   .catch(err => { console.log(err) })
 }
 
-// ========== INITIALIZATION ==========
-config()
-generateEmployeeElements()
-generateInquiriesElements()
-generateVehiclesElements()
-
-// Attach form submit handlers
 document.getElementById("employeeForm").addEventListener("submit", (e) => {
   e.preventDefault()
   onPostEmployee()
@@ -327,3 +378,8 @@ document.getElementById("vehicleForm").addEventListener("submit", (e) => {
   e.preventDefault()
   onPostVehicle()
 })
+
+config()
+generateEmployeeElements()
+generateInquiriesElements()
+generateVehiclesElements()

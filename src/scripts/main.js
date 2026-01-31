@@ -1,3 +1,5 @@
+import { isValidTextInput } from "./inputs_helper.js"
+
 var origin = "127.0.0.1:8082"
 var url = `http://${origin}`
 localStorage.setItem("url", url)
@@ -7,7 +9,7 @@ async function generateEmployeeElements() {
   if (!response.ok) {
     throw new Error(`Response status: ${response.status}`);
   }
-  companies = await response.json()
+  let companies = await response.json()
   console.log(companies)
   let compContainer = document.getElementById("companies_container")
   companies.forEach(el => {
@@ -46,6 +48,18 @@ async function fetchCompanies() {
 function onPostCompany() {
   let name = document.getElementById("name-field")
   let desc = document.getElementById("desc-field")
+  
+  // Validation
+  if (!isValidTextInput(name.value)) {
+    alert(`Invalid information: ${name.name}`)
+    return
+  }
+
+  if (!isValidTextInput(desc.value)) {
+    alert(`Invalid information: ${desc.name}`)
+    return
+  }
+  
   fetch(url + "/companies", {
     method: 'POST',
     headers: {
@@ -92,16 +106,9 @@ function onMoreInfo(obj) {
   location.href="/src/pages/company_page.html"
 }
 
-function fetchClients() {
-  return fetch(`${url}/clients`)
-  .then((x) => x.json())
-  .then((x) => console.log(x))
-}
-
-function fetchClient(id) {
-  return fetch(`${url}/clients/${id}`)
-  .then((x) => x.json())
-  .then((x) => console.log(x))
-}
+document.getElementById("companyForm").addEventListener("submit", (e) => {
+  e.preventDefault()
+  onPostCompany()
+})
 
 generateEmployeeElements()

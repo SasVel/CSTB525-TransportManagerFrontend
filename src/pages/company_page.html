@@ -7,15 +7,15 @@
 </head>
 <body>
     <h1 id="body-title">Bober Express Management System</h1>
-    <!-- Employee Management -->
+    <!-- Employees -->
     <section>
         <h2>Employees</h2>
         <div id="employees_container"></div>
         <hr>
         <form id="employeeForm">
-            <input type="text" id="empName" placeholder="Employee Name" required><br>
-            <input type="text" id="empPosition" placeholder="Position" required><br>
-            <input type="number" id="empSalary" placeholder="Salary" required><br>
+            <input type="text" id="empName" name="Employee Name" placeholder="Employee Name" required><br>
+            <input type="text" id="empPosition" name="Position" placeholder="Position" required><br>
+            <input type="number" id="empSalary" name="Salary" placeholder="Salary" required><br>
             <button type="submit">Add Employee</button>
         </form>
         <div id="employeeList"></div>
@@ -27,32 +27,33 @@
         <div id="inquiries_container"></div>
         <hr>
         <form id="inquiryForm">
-            <input type="text" id="inquiryOrigin" placeholder="Origin Address" required><br>
-            <input type="text" id="inquiryDestination" placeholder="Destination Address" required><br>
-            <input type="date" id="inquiryDeparture" placeholder="Departure Date" required><br>
-            <input type="date" id="inquiryArrival" placeholder="Arrival Date" required><br>
-            <input type="number" id="inquiryCost" placeholder="Cost" step="0.01" required><br>
-            <input type="number" id="inquiryCargoAmount" placeholder="Cargo Amount" required><br>
+            <input type="text" id="inquiryOrigin" name="Origin Address" placeholder="Origin Address" required><br>
+            <input type="text" id="inquiryDestination" name="Destination Address" placeholder="Destination Address" required><br>
+            <input type="date" id="inquiryDeparture" name="Departure Date" placeholder="Departure Date" required><br>
+            <input type="date" id="inquiryArrival" name="Arrival Date" placeholder="Arrival Date" required><br>
+            <input type="number" id="inquiryCost" name="Cost" placeholder="Cost" step="0.01" required><br>
+            <input type="number" id="inquiryCargoAmount" name="Cargo Amount" placeholder="Cargo Amount" required><br>
             <button type="submit">Submit Inquiry</button>
         </form>
         <div id="inquiryList"></div>
     </section>
 
-    <!-- Vehicle Management -->
+    <!-- Vehicles -->
     <section>
         <h2>Vehicles</h2>
         <div id="vehicles_container"></div>
         <hr>
         <form id="vehicleForm">
-            <input type="text" id="vehicleName" placeholder="Vehicle Name" required><br>
-            <input type="text" id="vehicleModel" placeholder="Model" required><br>
-            <input type="number" id="vehicleCapacity" placeholder="Capacity" required><br>
-            <input type="number" id="vehicleMaxLoad" placeholder="Max Load (kg)" required><br>
+            <input type="text" id="vehicleName" name="Vehicle Name" placeholder="Vehicle Name" required><br>
+            <input type="text" id="vehicleType" name="Vehicle Type" placeholder="Vehicle Type" required><br>
+            <input type="text" id="vehicleModel" name="Model" placeholder="Model" required><br>
+            <input type="number" id="vehicleCapacity" name="Capacity" placeholder="Capacity" required><br>
+            <input type="number" id="vehicleMaxLoad" name="Max Load (kg)" placeholder="Max Load (kg)" required><br>
             <button type="submit">Add Vehicle</button>
         </form>
         <div id="vehicleList"></div>
     </section>
-  <script type="module" src="/src/scripts/elements_helper.js"></script>
+  <script type="module" src="/src/scripts/inputs_helper.js"></script>
   <script type="module" src="/src/scripts/company_page.js"></script>
 </body>
 </html>
