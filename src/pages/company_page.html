@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bober Express Company</title>
+  <link rel="icon" href="/res/favicons/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1 id="body-title">Bober Express Management System</h1>
+    <!-- Employee Management -->
+    <section>
+        <h2>Employees</h2>
+        <div id="employees_container"></div>
+        <hr>
+        <form id="employeeForm">
+            <input type="text" id="empName" placeholder="Employee Name" required>
+            <input type="text" id="empPosition" placeholder="Position" required>
+            <button type="submit">Add Employee</button>
+        </form>
+        <div id="employeeList"></div>
+    </section>
+
+    <!-- Transport Inquiries -->
+    <section>
+        <h2>Transport Inquiries</h2>
+        <div id="inquiries_container"></div>
+        <hr>
+        <form id="inquiryForm">
+            <input type="text" id="inquiryName" placeholder="Your Name" required>
+            <input type="email" id="inquiryEmail" placeholder="Your Email" required>
+            <textarea id="inquiryDetails" placeholder="Details" required></textarea>
+            <button type="submit">Submit Inquiry</button>
+        </form>
+        <div id="inquiryList"></div>
+    </section>
+
+    <!-- Vehicle Management -->
+    <section>
+        <h2>Vehicles</h2>
+        <div id="vehicles_container"></div>
+        <hr>
+        <form id="vehicleForm">
+            <input type="text" id="vehicleName" placeholder="Vehicle Name" required>
+            <input type="text" id="vehicleType" placeholder="Vehicle Type" required>
+            <button type="submit">Add Vehicle</button>
+        </form>
+        <div id="vehicleList"></div>
+    </section>
+  <script type="module" src="/src/scripts/elements_helper.js"></script>
+  <script type="module" src="/src/scripts/company_page.js"></script>
+</body>
+</html>

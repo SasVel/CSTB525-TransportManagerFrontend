@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bober Express Management</title>
+  <link rel="icon" href="/res/favicons/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h1>Bober Express Management System</h1>
+  <div id="companies_container"></div>
+  <hr>
+  <form>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name-field" name="name" placeholder="Placeholder Company" required><br>
+    <label for="desc">Description:</label><br>
+    <input type="text" id="desc-field" name="desc" value=""><br><br>
+    <input type="submit" value="Submit" onclick="onPostCompany()">
+  </form>
+  
+  <script src="/src/scripts/main.js"></script>
+</body>
+</html>
