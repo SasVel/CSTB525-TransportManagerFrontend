@@ -27,23 +27,33 @@ async function generateEmployeeElements() {
     let detailsEl = entry.cloneNode(true)
     let summaryEl = detailsEl.querySelector("summary")
     
-    let infoBtn = document.createElement("button")
+    //table stuff
+    let table = document.createElement("table")
+    
+    let nameRow = table.insertRow()
+    nameRow.insertCell().innerText = "Name"
+    nameRow.insertCell().innerText = el.name
+
+    let positionRow = table.insertRow()
+    positionRow.insertCell().innerText = "Position"
+    positionRow.insertCell().innerText = el.position
+
+    let salaryRow = table.insertRow()
+    salaryRow.insertCell().innerText = "Salary"
+    salaryRow.insertCell().innerText = el.salary
+
     let deleteBtn = document.createElement("button")
 
-    infoBtn.innerText = "More Info"
-    infoBtn.type = "button"
     deleteBtn.innerText = "Delete"
     deleteBtn.type = "button"
 
-    infoBtn.addEventListener("click", onMoreInfoEmployee)
     deleteBtn.addEventListener("click", onDeleteEmployee)
 
-    infoBtn.data = el
     deleteBtn.data = el
 
     summaryEl.innerHTML = el.name
 
-    detailsEl.appendChild(infoBtn)
+    detailsEl.appendChild(table)
     detailsEl.appendChild(deleteBtn)
 
     empContainer.appendChild(detailsEl)
@@ -69,16 +79,11 @@ function onDeleteEmployee(obj) {
   .catch(err => { console.log(err) })
 }
 
-function onMoreInfoEmployee(obj) {
-  let empData = obj.currentTarget.data
-  console.log(empData)
-  localStorage.setItem("employeeData", JSON.stringify(empData))
-}
-
 function onPostEmployee() {
-  let name = document.getElementById("empName")
-  let position = document.getElementById("empPosition")
-  let salary = document.getElementById("empSalary")
+  const form = document.getElementById("employeeForm")
+  const name = form.elements.empName
+  const position = form.elements.empPosition
+  const salary = form.elements.empSalary
   
   // Validation
   if (!isValidTextInput(name.value)) {
@@ -131,23 +136,26 @@ async function generateInquiriesElements() {
     let detailsEl = entry.cloneNode(true)
     let summaryEl = detailsEl.querySelector("summary")
     
-    let infoBtn = document.createElement("button")
+    let table = document.createElement("table")
+    table.border = "1"
+    for (let i = 0; i < 4; i++) {
+      let row = table.insertRow()
+      row.insertCell()
+      row.insertCell()
+    }
+    
     let deleteBtn = document.createElement("button")
 
-    infoBtn.innerText = "More Info"
-    infoBtn.type = "button"
     deleteBtn.innerText = "Delete"
     deleteBtn.type = "button"
 
-    infoBtn.addEventListener("click", onMoreInfoInquiry)
     deleteBtn.addEventListener("click", onDeleteInquiry)
 
-    infoBtn.data = el
     deleteBtn.data = el
 
     summaryEl.innerHTML = el.name
 
-    detailsEl.appendChild(infoBtn)
+    detailsEl.appendChild(table)
     detailsEl.appendChild(deleteBtn)
 
     inquContainer.appendChild(detailsEl)
@@ -173,22 +181,17 @@ function onDeleteInquiry(obj) {
   .catch(err => { console.log(err) })
 }
 
-function onMoreInfoInquiry(obj) {
-  let inquiryData = obj.currentTarget.data
-  console.log(inquiryData)
-  localStorage.setItem("inquiryData", JSON.stringify(inquiryData))
-}
-
 function onPostInquiry() {
-  let name = document.getElementById("inquiryName")
-  let email = document.getElementById("inquiryEmail")
-  let details = document.getElementById("inquiryDetails")
-  let origin = document.getElementById("inquiryOrigin")
-  let destination = document.getElementById("inquiryDestination")
-  let departure = document.getElementById("inquiryDeparture")
-  let arrival = document.getElementById("inquiryArrival")
-  let cost = document.getElementById("inquiryCost")
-  let cargoAmount = document.getElementById("inquiryCargoAmount")
+  const form = document.getElementById("inquiryForm")
+  const name = form.elements.inquiryName
+  const email = form.elements.inquiryEmail
+  const details = form.elements.inquiryDetails
+  const origin = form.elements.inquiryOrigin
+  const destination = form.elements.inquiryDestination
+  const departure = form.elements.inquiryDeparture
+  const arrival = form.elements.inquiryArrival
+  const cost = form.elements.inquiryCost
+  const cargoAmount = form.elements.inquiryCargoAmount
   
   // Validation
   if (!isValidTextInput(name.value)) {
@@ -265,23 +268,37 @@ async function generateVehiclesElements() {
     let detailsEl = entry.cloneNode(true)
     let summaryEl = detailsEl.querySelector("summary")
     
-    let infoBtn = document.createElement("button")
+    //table stuff
+    let table = document.createElement("table")
+    
+    let nameRow = table.insertRow()
+    nameRow.insertCell().innerText = "Model"
+    nameRow.insertCell().innerText = el.model
+    
+    let typeRow = table.insertRow()
+    typeRow.insertCell().innerText = "Type"
+    typeRow.insertCell().innerText = el.type
+
+    let capacityRow = table.insertRow()
+    capacityRow.insertCell().innerText = "Capacity"
+    capacityRow.insertCell().innerText = el.capacity
+
+    let maxLoadRow = table.insertRow()
+    maxLoadRow.insertCell().innerText = "Max Load"
+    maxLoadRow.insertCell().innerText = el.maxLoad
+    
     let deleteBtn = document.createElement("button")
 
-    infoBtn.innerText = "More Info"
-    infoBtn.type = "button"
     deleteBtn.innerText = "Delete"
     deleteBtn.type = "button"
 
-    infoBtn.addEventListener("click", onMoreInfoVehicle)
     deleteBtn.addEventListener("click", onDeleteVehicle)
 
-    infoBtn.data = el
     deleteBtn.data = el
 
     summaryEl.innerHTML = el.model
 
-    detailsEl.appendChild(infoBtn)
+    detailsEl.appendChild(table)
     detailsEl.appendChild(deleteBtn)
 
     vehiclesContainer.appendChild(detailsEl)
@@ -307,18 +324,13 @@ function onDeleteVehicle(obj) {
   .catch(err => { console.log(err) })
 }
 
-function onMoreInfoVehicle(obj) {
-  let vehicleData = obj.currentTarget.data
-  console.log(vehicleData)
-  localStorage.setItem("vehicleData", JSON.stringify(vehicleData))
-}
-
 function onPostVehicle() {
-  let name = document.getElementById("vehicleName")
-  let type = document.getElementById("vehicleType")
-  let model = document.getElementById("vehicleModel")
-  let capacity = document.getElementById("vehicleCapacity")
-  let maxLoad = document.getElementById("vehicleMaxLoad")
+  const form = document.getElementById("vehicleForm")
+  const name = form.elements.vehicleName
+  const type = form.elements.vehicleType
+  const model = form.elements.vehicleModel
+  const capacity = form.elements.vehicleCapacity
+  const maxLoad = form.elements.vehicleMaxLoad
   
   // Validation
   if (!isValidTextInput(name.value)) {

@@ -46,8 +46,9 @@ async function fetchCompanies() {
 }
 
 function onPostCompany() {
-  let name = document.getElementById("name-field")
-  let desc = document.getElementById("desc-field")
+  const form = document.getElementById("companyForm")
+  const name = form.elements["name-field"]
+  const desc = form.elements["desc-field"]
   
   // Validation
   if (!isValidTextInput(name.value)) {
@@ -75,12 +76,8 @@ function onPostCompany() {
     if (!x.ok) {
       throw new Error(`Response status: ${x.status}`);
     }
+    window.location.reload()
     return x.json()
-  })
-  .then(() => {
-    name.value = ""
-    desc.value = ""
-    generateEmployeeElements()
   })
   .catch(err => { console.log(err) })
 }
@@ -95,7 +92,10 @@ function onDeleteCompany(obj) {
     },
     body: JSON.stringify(obj.currentTarget.data)
   })
-  .then(x => x.json())
+  .then(x => { 
+    x.json() 
+    window.location.reload()
+  })
   .catch(err => { console.log(err) })
 }
 
