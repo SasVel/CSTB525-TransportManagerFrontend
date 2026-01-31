@@ -13,8 +13,9 @@
         <div id="employees_container"></div>
         <hr>
         <form id="employeeForm">
-            <input type="text" id="empName" placeholder="Employee Name" required>
-            <input type="text" id="empPosition" placeholder="Position" required>
+            <input type="text" id="empName" placeholder="Employee Name" required><br>
+            <input type="text" id="empPosition" placeholder="Position" required><br>
+            <input type="number" id="empSalary" placeholder="Salary" required><br>
             <button type="submit">Add Employee</button>
         </form>
         <div id="employeeList"></div>
@@ -26,9 +27,12 @@
         <div id="inquiries_container"></div>
         <hr>
         <form id="inquiryForm">
-            <input type="text" id="inquiryName" placeholder="Your Name" required>
-            <input type="email" id="inquiryEmail" placeholder="Your Email" required>
-            <textarea id="inquiryDetails" placeholder="Details" required></textarea>
+            <input type="text" id="inquiryOrigin" placeholder="Origin Address" required><br>
+            <input type="text" id="inquiryDestination" placeholder="Destination Address" required><br>
+            <input type="date" id="inquiryDeparture" placeholder="Departure Date" required><br>
+            <input type="date" id="inquiryArrival" placeholder="Arrival Date" required><br>
+            <input type="number" id="inquiryCost" placeholder="Cost" step="0.01" required><br>
+            <input type="number" id="inquiryCargoAmount" placeholder="Cargo Amount" required><br>
             <button type="submit">Submit Inquiry</button>
         </form>
         <div id="inquiryList"></div>
@@ -40,8 +44,10 @@
         <div id="vehicles_container"></div>
         <hr>
         <form id="vehicleForm">
-            <input type="text" id="vehicleName" placeholder="Vehicle Name" required>
-            <input type="text" id="vehicleType" placeholder="Vehicle Type" required>
+            <input type="text" id="vehicleName" placeholder="Vehicle Name" required><br>
+            <input type="text" id="vehicleModel" placeholder="Model" required><br>
+            <input type="number" id="vehicleCapacity" placeholder="Capacity" required><br>
+            <input type="number" id="vehicleMaxLoad" placeholder="Max Load (kg)" required><br>
             <button type="submit">Add Vehicle</button>
         </form>
         <div id="vehicleList"></div>

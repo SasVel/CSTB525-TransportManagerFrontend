@@ -53,11 +53,21 @@ function onPostCompany() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-          name: name.value,
-          description: desc.value
-        })
+      name: name.value,
+      description: desc.value
+    })
   })
-  .then(x => x.json())
+  .then(x => {
+    if (!x.ok) {
+      throw new Error(`Response status: ${x.status}`);
+    }
+    return x.json()
+  })
+  .then(() => {
+    name.value = ""
+    desc.value = ""
+    generateEmployeeElements()
+  })
   .catch(err => { console.log(err) })
 }
 
